@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "TestApp",
+    "slug": "testapp",
+    "version": "1.0.0",
+    "sdkVersion": "50.0.0",
+    "platforms": ["android"],
+    "android": {
+      "package": "com.brunkeralf.testapp"
+    }
+  }
+}
