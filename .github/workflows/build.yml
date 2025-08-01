@@ -24,13 +24,14 @@ jobs:
       - name: Install Expo CLI
         run: npm install -g expo-cli
 
-      - name: Create dummy APK
-        run: |
-          mkdir -p android/app/build/outputs/apk/release
-          echo "Fake APK placeholder" > android/app/build/outputs/apk/release/app-release.apk
+      - name: Login to Expo
+        run: expo login -u ${{ secrets.EXPO_USERNAME }} -p ${{ secrets.EXPO_PASSWORD }}
 
-      - name: Upload dummy APK
+      - name: Build APK with Expo
+        run: expo build:android --non-interactive
+
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: dist/*.apk
