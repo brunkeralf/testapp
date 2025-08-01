@@ -7,27 +7,16 @@ on:
 
 jobs:
   build:
+    name: Build Android APK
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install EAS CLI
-        run: npm install -g eas-cli
-
-      - name: Login to Expo (anonymt)
-        run: eas whoami || echo "Bygger utan login"
-
-      - name: Build APK
-        run: eas build --platform android --profile preview --non-interactive
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
-        with:
-          name: app-apk
-          path: dist/**/*.apk
+      - name: Install
