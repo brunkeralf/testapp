@@ -27,7 +27,7 @@ jobs:
       - name: Login to Expo
         run: expo login -u ${{ secrets.EXPO_USERNAME }} -p ${{ secrets.EXPO_PASSWORD }}
 
-      - name: Build APK with Expo
+      - name: Build APK
         run: expo build:android --non-interactive
 
       - name: Upload APK artifact
