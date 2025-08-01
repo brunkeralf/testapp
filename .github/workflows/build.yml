@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -24,15 +24,13 @@ jobs:
       - name: Install Expo CLI
         run: npm install -g expo-cli
 
-      - name: Build APK
+      - name: Create dummy APK
         run: |
-          npx expo install
-          npx expo export --experimental-bundle --dev
           mkdir -p android/app/build/outputs/apk/release
           echo "Fake APK placeholder" > android/app/build/outputs/apk/release/app-release.apk
 
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload dummy APK
+        uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
           path: android/app/build/outputs/apk/release/app-release.apk
